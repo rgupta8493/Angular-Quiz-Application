@@ -8,6 +8,7 @@ function QuizController(quizMetrics,DataService) {
     vm.questionAnswered=questionAnswered;
     vm.activeQuestion =0;
     vm.setActiveQuestion= setActiveQuestion;
+    vm.selectAnswer=selectAnswer;
     var numQuestionsAnswered =0;
 
     function setActiveQuestion(){
@@ -37,6 +38,10 @@ function QuizController(quizMetrics,DataService) {
         vm.setActiveQuestion();
         
         
+    }
+    function selectAnswer(index){
+        DataService.quizQuestions[vm.activeQuestion].selected = index; 
+         
     }
 }
 
