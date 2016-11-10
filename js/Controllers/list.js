@@ -1,21 +1,24 @@
 angular.module("myapp").controller("listCtrl", ListController);
 
-function ListController() {
+ListController.$inject =['quizMetrics']; <!--passing service here-->
+function ListController(quizMetrics) {
     var vm = this;
+    vm.quizMetrics = quizMetrics; 
     vm.data = turtlesData;
     vm.activeTurtle = {};
     vm.changeActiveTurtle = changeActiveTurtle;
-    vm.activateQuiz= activateQuiz;
-    vm.search="";
-    vm.quizActive = false;
+    vm.activateQuiz = activateQuiz;
+    vm.search = "";
+    
 
     function changeActiveTurtle(index) {
         vm.activeTurtle = index;
-    };
-    function activateQuiz(){
-        vm.quizActive= true;
-    };
-};
+    }
+
+    function activateQuiz() {
+        quizMetrics.changeState(true);
+    }
+}
 var turtlesData = [
     {
         type: "Green Turtle"
