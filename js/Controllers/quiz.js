@@ -11,8 +11,9 @@ function QuizController(quizMetrics,DataService) {
     vm.selectAnswer=selectAnswer;
     var numQuestionsAnswered =0;
 
-    function setActiveQuestion(){
-        var breakOut = false;
+    function setActiveQuestion(index){
+        if(index===undefined){
+             var breakOut = false;
         var quizLength= DataService.quizQuestions.length - 1;
         
         while(!breakOut){
@@ -22,6 +23,10 @@ function QuizController(quizMetrics,DataService) {
             }
         }
         
+        }else{
+            vm.activeQuestion = index;
+        }
+       
         
         
     }
