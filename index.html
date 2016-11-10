@@ -18,6 +18,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/Controllers/list.js"></script>
+    <script src="js/Controllers/quiz.js"></script>
 </head>
 
 <body>
@@ -76,8 +77,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <<div ng-controller="quizCtrl as quiz">
+        </div>  <!--end of list controller here--> <!--In angular controllers cant talk with each other they are segregated and have no reference to each other<!--  hence cant use list.quizActive on the below div-->
+        <!--for this Angular provide the concept of services and these allows the controllers to communicate. one other way of thinking is you might have different controllers in your application and each controller had to pull in some data from an Api one way is to write Api logic in every controller but thats not good practice so instead we want to take that Api logic and put it into service and then all controller can have access to that service and then all controllers can use api logic and you write code once .
+        Another way around is you can put some data into a service and allow multiple controllers access to that service and this way we share data across controllers that what we are going to do here  -->
+        
+        <div ng-controller="quizCtrl as quiz">
             
         </div>
     </div>
@@ -87,5 +91,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 </html>
