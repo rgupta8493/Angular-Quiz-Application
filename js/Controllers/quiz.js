@@ -1,6 +1,11 @@
-angular.module("myapp")
-       .controller("quizCtrl",QuizController);
+angular.module("myapp").controller("quizCtrl", QuizController);
+QuizController.$inject = ['quizMetrics','DataService'];
 
-    function QuizController(){
-        var vm=this;
-    }
+function QuizController(quizMetrics,DataService) {
+    var vm = this;
+    vm.quizMetrics = quizMetrics;
+}
+
+
+    
+    

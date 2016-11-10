@@ -20,6 +20,7 @@
     <script src="js/Controllers/list.js"></script>
     <script src="js/Controllers/quiz.js"></script>
     <script src="js/factories/quizMetrics.js"></script>
+    <script src="js/factories/dataservice.js"></script>
 </head>
 
 <body>
@@ -82,7 +83,8 @@
         <!--for this Angular provide the concept of services and these allows the controllers to communicate. one other way of thinking is you might have different controllers in your application and each controller had to pull in some data from an Api one way is to write Api logic in every controller but thats not good practice so instead we want to take that Api logic and put it into service and then all controller can have access to that service and then all controllers can use api logic and you write code once .
         Another way around is you can put some data into a service and allow multiple controllers access to that service and this way we share data across controllers that what we are going to do here  -->
         
-        <div ng-controller="quizCtrl as quiz">
+        <div ng-controller="quizCtrl as quiz" ng-show="quiz.quizMetrics.quizActive">
+           <h1>Quiz</h1>
             
         </div>
     </div>
