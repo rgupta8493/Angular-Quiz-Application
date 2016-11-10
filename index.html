@@ -1,7 +1,5 @@
-
-    <!-- Brushing up Angular and Bootstrap skills  # Ronak Gupta
+<!-- Brushing up Angular and Bootstrap skills  # Ronak Gupta
 -->
-
 <!DOCTYPE html>
 <html lang="en" ng-app="myapp">
 
@@ -29,16 +27,13 @@
             <h1>Turtle facts Quiz</h1>
             <h3>Learn about all the turtles below before you decide to take on the <strong>TURTLE QUIZ</strong></h3> </div>
         <div ng-controller="listCtrl as list" ng-hide="list.quizMetrics.quizActive">
-           <form class="form-inline well well-sm clearfix ">
-             <span class="glyphicon glyphicon-search"></span>
-             <input type="text" placeholder="Search..." class="form-control"
-               ng-model="list.search"> 
-               <button class="btn btn-warning pull-right"
-               ng-click="list.activateQuiz()"><strong>Start Quiz</strong></button>
-             
-           </form>
+            <form class="form-inline well well-sm clearfix "> <span class="glyphicon glyphicon-search"></span>
+                <input type="text" placeholder="Search..." class="form-control" ng-model="list.search">
+                <button class="btn btn-warning pull-right" ng-click="list.activateQuiz()"><strong>Start Quiz</strong></button>
+            </form>
             <div class="row">
-                <div class="col-sm-6" ng-repeat="turtle in list.data | filter:list.search"> <!-- used angular filter to search in list.data--->
+                <div class="col-sm-6" ng-repeat="turtle in list.data | filter:list.search">
+                    <!-- used angular filter to search in list.data--->
                     <div class="well well-sm">
                         <div class="row">
                             <div class="col-md-6"> <img ng-src="{{turtle.image_url}}" class="img-rounded img-reponsive well-image"> </div>
@@ -79,21 +74,46 @@
                     </div>
                 </div>
             </div>
-        </div>  <!--end of list controller here--> <!--In angular controllers cant talk with each other they are segregated and have no reference to each other<!--  hence cant use list.quizActive on the below div-->
+        </div>
+        <!--end of list controller here-->
+        <!--In angular controllers cant talk with each other they are segregated and have no reference to each other<!--  hence cant use list.quizActive on the below div-->
         <!--for this Angular provide the concept of services and these allows the controllers to communicate. one other way of thinking is you might have different controllers in your application and each controller had to pull in some data from an Api one way is to write Api logic in every controller but thats not good practice so instead we want to take that Api logic and put it into service and then all controller can have access to that service and then all controllers can use api logic and you write code once .
         Another way around is you can put some data into a service and allow multiple controllers access to that service and this way we share data across controllers that what we are going to do here  -->
-        
         <div ng-controller="quizCtrl as quiz" ng-show="quiz.quizMetrics.quizActive">
-           <h1>Quiz</h1>
-            
+            <div class="row">
+                <div class="col-xs-8">
+                    <h2>Progress:</h2>
+                    <div class="btn-toolbar">
+                        <button class="btn" ng-repeat="question in quiz.dataService.quizQuestions" ng-class="{'btn-info': question.selected !==null,
+                           'btn-danger': question.selected=== null
+                       }"> <span class="glyphicon" ng-class="{'glyphicon-pencil':question.selected!==null,
+                               'glyphicon-question-sign':question.selected===null
+                           }"></span> </button>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="row">
+                        <h4>Legend:</h4>
+                        <div class="col-sm-4">
+                            <button class="btn btn-info"> <span class="glyphicon glyphicon-pencil"></span> </button>
+                                <p>Answered</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="btn btn-danger">
+                                <span class="glyphicon glyphicon-question-sign"></span>
+                            </button>
+                            <p>Unanswered</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    
 </body>
 <!-- /.container -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 
 </html>
