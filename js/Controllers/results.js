@@ -10,6 +10,7 @@ function ResultsController(quizMetrics ,DataService){
      vm.getAnswerClass= getAnswerClass;
      vm.setActiveQuestion = setActiveQuestion;
      vm.calculatePerc=calculatePerc;
+     vm.reset=reset;
      vm.activeQuestion =0;
      
      function calculatePerc(){
@@ -25,5 +26,15 @@ function ResultsController(quizMetrics ,DataService){
               return "bg-danger";  
           }
           
+     }
+     function reset(){
+          quizMetrics.changeState("results",false);
+          quizMetrics.numCorrect = 0;
+          
+          for(var i=0 ;i<DataService.quizQuestions.length;i++){
+               var data = DataService.quizQuestions[i];
+               data.selected = null;
+               data.correct = null;
+          }
      }
  }
