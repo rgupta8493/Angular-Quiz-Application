@@ -6,7 +6,7 @@ angular.module("myapp")
      var quizObj ={
          quizActive: false,
          resultsActive : false,
-         changeState: changeState
+         changeState: changeState,
          correctAnswers:[],
          markQuiz: markQuiz,
          numCorrect:0
@@ -33,7 +33,7 @@ angular.module("myapp")
                   DataService.quizQuestions[i].correct=true;
                   quizObj.numCorrect++;
               }else{
-                  DataService.quizQuestions[i].correct = false;
+                  DataService.quizQuestions[i].correct = false; 
               }
           }
           
