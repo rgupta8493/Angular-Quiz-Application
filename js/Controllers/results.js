@@ -8,8 +8,16 @@ function ResultsController(quizMetrics ,DataService){
      vm.quizMetrics =quizMetrics;
      vm.dataService = DataService;
      vm.getAnswerClass= getAnswerClass;
+     vm.setActiveQuestion = setActiveQuestion;
+     vm.calculatePerc=calculatePerc;
      vm.activeQuestion =0;
      
+     function calculatePerc(){
+          return quizMetrics.numCorrect / DataService.quizQuestions.length *100 ;
+     }
+     function setActiveQuestion(index){
+          vm.activeQuestion=index;
+     }
      function getAnswerClass(index){
           if(index===quizMetrics.correctAnswers[vm.activeQuestion]){
                return "bg-success"
