@@ -7,4 +7,15 @@ function ResultsController(quizMetrics ,DataService){
     
      vm.quizMetrics =quizMetrics;
      vm.dataService = DataService;
+     vm.getAnswerClass= getAnswerClass;
+     vm.activeQuestion =0;
+     
+     function getAnswerClass(index){
+          if(index===quizMetrics.correctAnswers[vm.activeQuestion]){
+               return "bg-success"
+          }else if(index===DataService.quizQuestions[vm.activeQuestion].selected){
+              return "bg-danger";  
+          }
+          
+     }
  }
