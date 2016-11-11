@@ -10,6 +10,7 @@ function QuizController(quizMetrics,DataService) {
     vm.setActiveQuestion= setActiveQuestion;
     vm.selectAnswer=selectAnswer;
     vm.error = false;
+    vm.finalise=false;
     var numQuestionsAnswered =0;
 
     function setActiveQuestion(index){
@@ -42,6 +43,16 @@ function QuizController(quizMetrics,DataService) {
             numQuestionsAnswered++;
             if(numQuestionsAnswered >= quizLength){
                 //finalise quiz
+                for(var i=0;i<quizLength;i++){
+                    if(DataService.quizQuestions[i].selected===null){
+                        setActiveQuestion(i);
+                        return;
+                    }
+                    
+                }
+                vm.error=false;
+                vm.finalise=true;
+                return;
             }
         }
         vm.setActiveQuestion();
