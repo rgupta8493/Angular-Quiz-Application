@@ -16,6 +16,6 @@ function ListController(quizMetrics,DataService) {
     }
 
     function activateQuiz() {
-        quizMetrics.changeState(true);
+        quizMetrics.changeState("quiz",true);
     }
 }

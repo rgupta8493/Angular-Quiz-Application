@@ -9,8 +9,9 @@ function QuizController(quizMetrics,DataService) {
     vm.activeQuestion =0;
     vm.setActiveQuestion= setActiveQuestion;
     vm.selectAnswer=selectAnswer;
+    vm.finaliseAnswers = finaliseAnswers;
     vm.error = false;
-    vm.finalise=false;
+    vm.finalise=false;                      
     var numQuestionsAnswered =0;
 
     function setActiveQuestion(index){
@@ -62,6 +63,16 @@ function QuizController(quizMetrics,DataService) {
     function selectAnswer(index){
         DataService.quizQuestions[vm.activeQuestion].selected = index; 
          
+    }
+    function finaliseAnswers(){
+        
+        vm.finalise=false;
+        numQuestionsAnswered=0;
+        vm.activeQuestion=0;
+        quizMetrics.markQuiz();
+        quizMetrics.changeState("quiz", false);
+        quizMetrics.changeState("results", true);
+        
     }
 }
 
